@@ -72,5 +72,4 @@ public class Blade : MonoBehaviour {
 		Destroy(currentBladeTrail, 2f);
 		circleCollider.enabled = false;
 	}
-
 }

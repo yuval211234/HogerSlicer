@@ -64,7 +64,6 @@ public class HogerSpawner : MonoBehaviour
         GameObject spawnedObject = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
         Rigidbody2D spawnedRigidBody2D = spawnedObject.GetComponent<Rigidbody2D>();
         spawnedRigidBody2D.AddForce(spawnedObject.transform.up * startForce, ForceMode2D.Impulse);
-        //Destroy(spawedObject, 5f);
 
         return spawnedObject;
     }

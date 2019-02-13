@@ -9,7 +9,6 @@ public class SlicedHoger : MonoBehaviour
     float LeftHogerRotation;
     float RightHogerRotation;
 
-    // Start is called before the first frame update
     void Start()
     {
         rightSlicedHoger = transform.GetChild(0).gameObject;
@@ -20,7 +19,6 @@ public class SlicedHoger : MonoBehaviour
         RightHogerRotation = Random.Range(20, 300);
     }
 
-    // Update is called once per frame
     void Update()
     {
         rightSlicedHoger.transform.Rotate(Vector3.back, Time.deltaTime * LeftHogerRotation);

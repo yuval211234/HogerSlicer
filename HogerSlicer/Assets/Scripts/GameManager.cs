@@ -7,7 +7,7 @@ public class GameManager
 {
     private static GameManager GameManagerInstance { get; set; }
 
-    private int Saves { get; set; }
+    private int Lives { get; set; }
     private int Score { get; set; }
 
     private bool IsMzCollision { get; set; }
@@ -16,22 +16,6 @@ public class GameManager
         InitGame();
         Time.timeScale = 1;
     }
-
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-    //    InitGame();
-    //    Score = 0;
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    if (IsGameOver())
-    //    {
-    //        //end game
-    //    }
-    //}
 
     public static GameManager GetInstace()
     {
@@ -43,7 +27,7 @@ public class GameManager
 
     private void InitGame()
     {
-        Saves = 3;
+        Lives = 3;
         IsMzCollision = false;
         Score = 0;
     }
@@ -68,7 +52,7 @@ public class GameManager
 
     public void MissedHogerCut()
     {
-        Saves--;
+        Lives--;
         if (IsGameOver())
         {
             Time.timeScale = 0;
@@ -82,11 +66,16 @@ public class GameManager
 
     public bool IsGameOver()
     {
-        return Saves <= 0 || IsMzCollision;
+        return Lives <= 0 || IsMzCollision;
     }
 
     public int GetScore()
     {
         return Score;
+    }
+
+    public int GetLives()
+    {
+        return Lives;
     }
 }

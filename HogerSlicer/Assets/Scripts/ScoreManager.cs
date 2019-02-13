@@ -1,21 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    public Text ScoreText { get; set; }
+    public TextMeshPro ScoreText { get; set; }
 
-    // Start is called before the first frame update
     void Start()
     {
-        ScoreText = GetComponent<Text>();
+        ScoreText = GetComponent<TextMeshPro>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        ScoreText.text = $"Score : {GameManager.GetInstace().GetScore()}";
+        ScoreText.text = $"X {GameManager.GetInstace().GetScore()}";
     }
 }
