@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class HogerSpawner : MonoBehaviour {
 
-	public GameObject fruitPrefab;
-	public Transform[] spawnPoints = new Transform[3];
+	public GameObject hogerPrefab;
+    public GameObject bombPrefab;
+    public float bombSpawnProbability = 10;
+    public float startForce = 15f;
+    public Transform[] spawnPoints = new Transform[3];
     public Material[] hogerVariants = new Material[3];
 
 	public int stage = 0;
@@ -36,14 +39,33 @@ public class HogerSpawner : MonoBehaviour {
 			float delay = Random.Range(this.getMinDelay(), this.getMaxDelay());
 			yield return new WaitForSeconds(delay);
 
-            int spawnIndex = Random.Range(0, spawnPoints.Length);
-            Transform spawnPoint = spawnPoints[spawnIndex];
+            float currentSeed = Mathf.Round(Random.Range(1, bombSpawnProbability + 1));
 
-            GameObject spawnedFruit = Instantiate(fruitPrefab, spawnPoint.position, spawnPoint.rotation);
-            Material chosenMaterial = hogerVariants[Random.Range(0, hogerVariants.Length)];
-            spawnedFruit.transform.GetChild(0).GetComponent<Renderer>().material = chosenMaterial;
-            Destroy(spawnedFruit, 5f);
-		}
+            Debug.Log(currentSeed);
+
+            if (currentSeed == bombSpawnProbability)
+            {
+                SpawnObjectAtRandomPoint(bombPrefab);
+            }
+            else
+            {
+                GameObject hogerObject = SpawnObjectAtRandomPoint(hogerPrefab);
+                Material currentHogerMaterial = hogerVariants[Random.Range(0, hogerVariants.Length)];
+                hogerObject.transform.GetChild(0).GetComponent<Renderer>().material = currentHogerMaterial;
+            }
+        }
 	}
+
+    private GameObject SpawnObjectAtRandomPoint(GameObject prefab)
+    {
+        int spawnIndex = Random.Range(0, spawnPoints.Length);
+        Transform spawnPoint = spawnPoints[spawnIndex];
+
+        GameObject spawnedObject = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
+        spawnedObject.GetComponent<Rigidbody2D>().AddForce(spawnedObject.transform.up * startForce, ForceMode2D.Impulse);
+        Destroy(spawnedObject, 5f);
+
+        return spawnedObject;
+    }
 	
 }
