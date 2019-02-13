@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class HogerSpawner : MonoBehaviour
 {
-    public GameObject fruitPrefab;
     public Transform[] spawnPoints = new Transform[3];
     public Material[] hogerVariants = new Material[3];
 
@@ -62,11 +61,11 @@ public class HogerSpawner : MonoBehaviour
         int spawnIndex = Random.Range(0, spawnPoints.Length);
         Transform spawnPoint = spawnPoints[spawnIndex];
 
-        GameObject spawnedFruit = Instantiate(fruitPrefab, spawnPoint.position, spawnPoint.rotation);
-        Material chosenMaterial = hogerVariants[Random.Range(0, hogerVariants.Length)];
-        spawnedFruit.transform.GetChild(0).GetComponent<Renderer>().material = chosenMaterial;
-        Destroy(spawnedFruit, 5f);
+        GameObject spawnedObject = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
+        Rigidbody2D spawnedRigidBody2D = spawnedObject.GetComponent<Rigidbody2D>();
+        spawnedRigidBody2D.AddForce(spawnedObject.transform.up * startForce, ForceMode2D.Impulse);
+        Destroy(spawnedObject, 5f);
 
-        return spawnedFruit;
+        return spawnedObject;
     }
 }

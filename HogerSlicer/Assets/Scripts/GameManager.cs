@@ -47,6 +47,19 @@ public class GameManager
         Score = 0;
     }
 
+    public void Cut(string type)
+    {
+        switch(type.ToUpper())
+        {
+            case "MZ":
+                CollideMzReport();
+                break;
+            case "HOGER":
+                HogerCut();
+                break;
+        }
+    }
+
     public void CollideMzReport()
     {
         IsMzCollision = true;
