@@ -7,8 +7,21 @@ public class FruitSpawner : MonoBehaviour {
 	public GameObject fruitPrefab;
 	public Transform[] spawnPoints;
 
-	public float minDelay = .1f;
+	public int stage = 0;
+
+	public float endminDelay = .1f;
 	public float maxDelay = 1f;
+
+	public float startMinDelay = 1f;
+	public float startMaxDelay = 2f;
+
+	float getMinDelay() {
+		return startMinDelay;
+	}
+
+	float getMaxDelay() {
+		return startMaxDelay;
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +32,7 @@ public class FruitSpawner : MonoBehaviour {
 	{
 		while (true)
 		{
-			float delay = Random.Range(minDelay, maxDelay);
+			float delay = Random.Range(this.getMinDelay(), this.getMaxDelay());
 			yield return new WaitForSeconds(delay);
 
 			int spawnIndex = Random.Range(0, spawnPoints.Length);

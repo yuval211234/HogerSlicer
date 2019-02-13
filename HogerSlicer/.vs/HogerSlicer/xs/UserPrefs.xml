@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{5B9FBFA3-7ECE-0DE5-0CAF-676CE953B0C1}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/FruitSpawner.cs">
+    <Files>
+      <File FileName="Assets/Scripts/FruitSpawner.cs" Line="29" Column="30" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
