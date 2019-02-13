@@ -5,7 +5,8 @@ using UnityEngine;
 public class HogerSpawner : MonoBehaviour {
 
 	public GameObject fruitPrefab;
-	public Transform[] spawnPoints;
+	public Transform[] spawnPoints = new Transform[3];
+    public Material[] hogerVariants = new Material[3];
 
 	public float minDelay = .1f;
 	public float maxDelay = 1f;
@@ -17,16 +18,18 @@ public class HogerSpawner : MonoBehaviour {
 
 	IEnumerator SpawnFruits ()
 	{
-		while (true)
-		{
-			float delay = Random.Range(minDelay, maxDelay);
-			yield return new WaitForSeconds(delay);
+        while (true)
+        {
+            float delay = Random.Range(minDelay, maxDelay);
+            yield return new WaitForSeconds(delay);
 
-			int spawnIndex = Random.Range(0, spawnPoints.Length);
-			Transform spawnPoint = spawnPoints[spawnIndex];
+            int spawnIndex = Random.Range(0, spawnPoints.Length);
+            Transform spawnPoint = spawnPoints[spawnIndex];
 
-			GameObject spawnedFruit = Instantiate(fruitPrefab, spawnPoint.position, spawnPoint.rotation);
-			Destroy(spawnedFruit, 5f);
+            GameObject spawnedFruit = Instantiate(fruitPrefab, spawnPoint.position, spawnPoint.rotation);
+            Material chosenMaterial = hogerVariants[Random.Range(0, hogerVariants.Length)];
+            spawnedFruit.transform.GetChild(0).GetComponent<Renderer>().material = chosenMaterial;
+            Destroy(spawnedFruit, 5f);
 		}
 	}
 	

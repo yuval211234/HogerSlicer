@@ -20,15 +20,13 @@ public class Hoger : MonoBehaviour {
 		if (col.tag == "Blade")
 		{
 			Vector3 direction = (col.transform.position - transform.position).normalized;
-
-			Quaternion rotation = Quaternion.LookRotation(Vector3.zero);
-
             GameObject slicedFruit = Instantiate(fruitSlicedPrefab, transform.position, transform.rotation);
-            GameObject ChildGameObject1 = slicedFruit.transform.GetChild(0).gameObject;
-            GameObject ChildGameObject2 = slicedFruit.transform.GetChild(1).gameObject;
-            ChildGameObject1.GetComponent<Rigidbody2D>().velocity = rb.velocity;
-            ChildGameObject2.GetComponent<Rigidbody2D>().velocity = rb.velocity;
-
+            Transform ChildGameObject1 = slicedFruit.transform.GetChild(0);
+            Transform ChildGameObject2 = slicedFruit.transform.GetChild(1);
+            ChildGameObject1.gameObject.GetComponent<Rigidbody2D>().velocity = rb.velocity;
+            ChildGameObject2.gameObject.GetComponent<Rigidbody2D>().velocity = rb.velocity;
+            ChildGameObject1.GetComponent<Renderer>().material = transform.GetChild(0).GetComponent<Renderer>().material;
+            ChildGameObject2.GetComponent<Renderer>().material = transform.GetChild(0).GetComponent<Renderer>().material;
             Destroy(slicedFruit, 3f);
 			Destroy(gameObject);
 		}
