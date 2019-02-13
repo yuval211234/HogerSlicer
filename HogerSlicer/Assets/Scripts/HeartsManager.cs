@@ -19,7 +19,7 @@ public class HeartsManager : MonoBehaviour
 
     void Update()
     {
-        int livesLeft = GameManager.GetInstace().GetLives();
+        int livesLeft = MyGameManager.instance.Lives;
         int hearts = transform.childCount;
 
         if (livesLeft < hearts)

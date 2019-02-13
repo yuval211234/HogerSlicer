@@ -29,8 +29,7 @@ public class Hoger : MonoBehaviour
         {
             CreateSlices(col);
             DestroyHoger();
-
-            GameManager.GetInstace().Cut("HOGER");
+            EventManager.TriggerEvent("CUT", "HOGER");
         }
     }
 

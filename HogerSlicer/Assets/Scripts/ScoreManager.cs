@@ -15,6 +15,6 @@ public class ScoreManager : MonoBehaviour
 
     void Update()
     {
-        ScoreText.text = $"X {GameManager.GetInstace().GetScore()}";
+        ScoreText.text = $"X {MyGameManager.instance.Score}";
     }
 }

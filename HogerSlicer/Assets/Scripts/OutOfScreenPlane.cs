@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class OutOfScreenPlane : MonoBehaviour
 {
-    GameManager gameManager;
+    MyGameManager gameManager;
     void Start()
     {
-        gameManager = GameManager.GetInstace();
     }
 
     void Update()
@@ -18,10 +17,7 @@ public class OutOfScreenPlane : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {            
         Destroy(col.gameObject);
-        if (col.gameObject.tag == "Hoger")
-        {
-            gameManager.MissedHogerCut();
-            Debug.Log("Missed cut");
-        }
+        EventManager.TriggerEvent("MISS", col.gameObject.tag);
+
     }
 }

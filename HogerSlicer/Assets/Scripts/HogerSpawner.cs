@@ -8,53 +8,24 @@ public class HogerSpawner : MonoBehaviour
 
 	public GameObject hogerPrefab;
     public GameObject bombPrefab;
-    public float bombSpawnProbability = 10;
     public float startForce = 15f;
-	public int stage = 0;
-    public float endMinDelay = .1f;
-    public float maxDelay = 1f;
-    public float startMinDelay = 1f;
-    public float startMaxDelay = 2f;
 
-    public GameManager GameManager { get; set; }
 
-    float getMinDelay()
+    private MyGameManager gameManager { get; set; }
+
+    public GameObject SpawnBomb()
     {
-        return startMinDelay;
+        return SpawnObjectAtRandomPoint(bombPrefab);
     }
 
-    float getMaxDelay()
+    public GameObject SpawnHoger()
     {
-        return startMaxDelay;
+        GameObject hogerObject = SpawnObjectAtRandomPoint(hogerPrefab);
+        Material currentHogerMaterial = hogerVariants[Random.Range(0, hogerVariants.Length)];
+        hogerObject.transform.GetChild(0).GetComponent<Renderer>().material = currentHogerMaterial;
+
+        return hogerObject;
     }
-
-    // Use this for initialization
-    void Start()
-    {
-        StartCoroutine(SpawnFruits(GameManager.GetInstace()));
-    }
-
-    IEnumerator SpawnFruits(GameManager gameManager)
-    {
-        while (!gameManager.IsGameOver())
-        {
-            float delay = Random.Range(this.getMinDelay(), this.getMaxDelay());
-            yield return new WaitForSeconds(delay);
-
-            float currentSeed = Mathf.Round(Random.Range(1, bombSpawnProbability + 1));
-
-            if (currentSeed == bombSpawnProbability)
-            {
-                SpawnObjectAtRandomPoint(bombPrefab);
-            }
-            else
-            {
-                GameObject hogerObject = SpawnObjectAtRandomPoint(hogerPrefab);
-                Material currentHogerMaterial = hogerVariants[Random.Range(0, hogerVariants.Length)];
-                hogerObject.transform.GetChild(0).GetComponent<Renderer>().material = currentHogerMaterial;
-            }
-        }
-	}
 
     private GameObject SpawnObjectAtRandomPoint(GameObject prefab)
     {

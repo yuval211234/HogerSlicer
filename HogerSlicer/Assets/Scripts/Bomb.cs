@@ -20,7 +20,7 @@ public class Bomb : MonoBehaviour
     {
         if (col.tag == "Blade")
         {
-            GameManager.GetInstace().Cut("MZ");
+            EventManager.TriggerEvent("CUT", "MZ");
         }
     }
 }
