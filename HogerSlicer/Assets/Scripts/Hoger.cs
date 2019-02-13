@@ -6,32 +6,49 @@ public class Hoger : MonoBehaviour {
 
 	public GameObject fruitSlicedPrefab;
 	public float startForce = 2f;
+    private Camera mainCamera;
+    private Rigidbody2D rb;
 
-	Rigidbody2D rb;
-
-	void Start ()
+    void Start ()
 	{
 		rb = GetComponent<Rigidbody2D>();
 		rb.AddForce(transform.up * startForce, ForceMode2D.Impulse);
-	}
+    }
+
+    void Update()
+    {
+
+    }
 
 	void OnTriggerEnter2D (Collider2D col)
 	{
 		if (col.tag == "Blade")
 		{
-			Vector3 direction = (col.transform.position - transform.position).normalized;
+            CreateSlices(col);
+            DestroyHoger();
 
-			Quaternion rotation = Quaternion.LookRotation(Vector3.zero);
-
-            GameObject slicedFruit = Instantiate(fruitSlicedPrefab, transform.position, transform.rotation);
-            GameObject ChildGameObject1 = slicedFruit.transform.GetChild(0).gameObject;
-            GameObject ChildGameObject2 = slicedFruit.transform.GetChild(1).gameObject;
-            ChildGameObject1.GetComponent<Rigidbody2D>().velocity = rb.velocity;
-            ChildGameObject2.GetComponent<Rigidbody2D>().velocity = rb.velocity;
-
-            Destroy(slicedFruit, 3f);
-			Destroy(gameObject);
-		}
+            GameManager.GetInstace().HogerCut();
+        }
 	}
+
+    private void DestroyHoger()
+    {
+        Destroy(gameObject);
+    }
+
+    private void CreateSlices(Collider2D col)
+    {
+        Vector3 direction = (col.transform.position - transform.position).normalized;
+
+        Quaternion rotation = Quaternion.LookRotation(Vector3.zero);
+
+        GameObject slicedFruit = Instantiate(fruitSlicedPrefab, transform.position, transform.rotation);
+        GameObject ChildGameObject1 = slicedFruit.transform.GetChild(0).gameObject;
+        GameObject ChildGameObject2 = slicedFruit.transform.GetChild(1).gameObject;
+        ChildGameObject1.GetComponent<Rigidbody2D>().velocity = rb.velocity;
+        ChildGameObject2.GetComponent<Rigidbody2D>().velocity = rb.velocity;
+
+        Destroy(slicedFruit, 3f);
+    }
 
 }

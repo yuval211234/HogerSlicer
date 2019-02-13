@@ -24,6 +24,5 @@ public class SlicedHoger : MonoBehaviour
     {
         rightSlicedHoger.transform.Rotate(Vector3.back, Time.deltaTime * LeftHogerRotation);
         leftSlicedHoger.transform.Rotate(Vector3.forward, Time.deltaTime * RightHogerRotation);
-        Debug.Log(LeftHogerRotation + ", " + RightHogerRotation);
     }
 }
