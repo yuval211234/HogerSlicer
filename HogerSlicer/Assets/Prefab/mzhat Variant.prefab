@@ -47,6 +47,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.005, y: 0.003}
   m_EdgeRadius: 0
+--- !u!114 &1845066492839139879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3850344413972316240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac223bb324875241a9f74677d7fa873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialRotation: 0
 --- !u!1001 &3850344413972350704
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60,11 +73,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: aef5e946cb7310f4e9663f91e42501fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 66.05185
+      value: 12.279208
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: aef5e946cb7310f4e9663f91e42501fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.03067
+      value: -2.945734
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: aef5e946cb7310f4e9663f91e42501fb, type: 3}
       propertyPath: m_LocalPosition.z

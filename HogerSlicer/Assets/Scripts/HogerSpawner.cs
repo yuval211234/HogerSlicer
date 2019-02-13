@@ -36,7 +36,7 @@ public class HogerSpawner : MonoBehaviour
 
     IEnumerator SpawnFruits(GameManager gameManager)
     {
-        while (!GameManager.GetInstace().IsGameOver())
+        while (!gameManager.IsGameOver())
         {
             float delay = Random.Range(this.getMinDelay(), this.getMaxDelay());
             yield return new WaitForSeconds(delay);

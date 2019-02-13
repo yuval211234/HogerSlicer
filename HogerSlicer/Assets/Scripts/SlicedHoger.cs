@@ -8,6 +8,7 @@ public class SlicedHoger : MonoBehaviour
     GameObject leftSlicedHoger;
     float LeftHogerRotation;
     float RightHogerRotation;
+
     // Start is called before the first frame update
     void Start()
     {

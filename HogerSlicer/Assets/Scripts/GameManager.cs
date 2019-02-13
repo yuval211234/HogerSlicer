@@ -14,6 +14,7 @@ public class GameManager
     private GameManager()
     {
         InitGame();
+        Time.timeScale = 1;
     }
 
     //// Start is called before the first frame update
@@ -68,6 +69,10 @@ public class GameManager
     public void MissedHogerCut()
     {
         Saves--;
+        if (IsGameOver())
+        {
+            Time.timeScale = 0;
+        }
     }
 
     public void HogerCut()
@@ -77,7 +82,7 @@ public class GameManager
 
     public bool IsGameOver()
     {
-        return Saves == 0 || IsMzCollision;
+        return Saves <= 0 || IsMzCollision;
     }
 
     public int GetScore()

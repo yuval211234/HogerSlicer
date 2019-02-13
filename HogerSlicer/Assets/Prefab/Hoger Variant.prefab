@@ -71,7 +71,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100002, guid: e3163bf5dfd2deb42835f5e71adf429a, type: 3}
       propertyPath: m_Name
-      value: Hoger Variant (1)
+      value: Hoger Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e3163bf5dfd2deb42835f5e71adf429a, type: 3}
+      propertyPath: m_TagString
+      value: Hoger
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: e3163bf5dfd2deb42835f5e71adf429a, type: 3}
       propertyPath: m_LocalPosition.x

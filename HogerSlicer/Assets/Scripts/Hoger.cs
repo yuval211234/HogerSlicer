@@ -7,13 +7,20 @@ public class Hoger : MonoBehaviour
 
     public GameObject slicedObjectPrefab;
     public float startForce = 2f;
+    public float initialRotation;
+    public float flipRotation;
 
     void Start()
     {
+        initialRotation = transform.rotation.z;
+        float randomMultiplier = Random.Range(-2, 2);
+        flipRotation = Random.Range(20, 120) * randomMultiplier;
     }
 
     void Update()
     {
+        transform.Rotate(Vector3.right, Time.deltaTime * flipRotation);
+        transform.Rotate(Vector3.forward, Time.deltaTime * initialRotation * 200);
     }
 
     void OnTriggerEnter2D(Collider2D col)
