@@ -188,7 +188,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 27efba7faf26c8643811b2391631962a, type: 2}
   - {fileID: 2100000, guid: 93aa6bcc83345514fae5dbfa622f6979, type: 2}
   - {fileID: 2100000, guid: 1942ee9f3747f3242acad10720151c2d, type: 2}
-  hogerPrefab: {fileID: 4744117727109487630, guid: 444d26abe5f4d6b499f25024cfae5458,
+  hogerPrefab: {fileID: 4744117727109487630, guid: 3fe6328b7b46088418977a71593af4fa,
     type: 3}
   bombPrefab: {fileID: 3850344413972316240, guid: 1aae82c9d482d48488ea902d3fa9c5b7,
     type: 3}

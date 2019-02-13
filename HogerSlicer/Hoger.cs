@@ -29,7 +29,8 @@ public class Hoger : MonoBehaviour
         {
             CreateSlices(col);
             DestroyHoger();
-            EventManager.TriggerEvent("CUT", "HOGER");
+
+            GameManager.GetInstace().Cut("HOGER");
         }
     }
 
@@ -44,17 +45,18 @@ public class Hoger : MonoBehaviour
         GameObject slicedFruit = Instantiate(slicedObjectPrefab, transform.position, transform.rotation);
         Transform ChildGameObject1 = slicedFruit.transform.GetChild(0);
         Transform ChildGameObject2 = slicedFruit.transform.GetChild(1);
-        InitSlicedHoger(ChildGameObject1, Vector2.left);
-        InitSlicedHoger(ChildGameObject2, Vector2.right);
+        InitSlicedHoger(ChildGameObject1);
+        InitSlicedHoger(ChildGameObject2);
         ChildGameObject2.transform.GetChild(0).GetComponent<Renderer>().material.mainTexture = transform.GetChild(1).GetComponent<Renderer>().material.mainTexture;
         Destroy(slicedFruit, 3f);
     }
 
-    public void InitSlicedHoger(Transform hogerPart, Vector2 VectorToGive)
+    public void InitSlicedHoger(Transform hogerPart)
     {
         hogerPart.gameObject.GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity;
+        hogerPart.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up);
         hogerPart.GetComponent<Renderer>().material = transform.GetChild(0).GetComponent<Renderer>().material;
-        hogerPart.gameObject.GetComponent<Rigidbody2D>().AddForce(VectorToGive * Random.Range(60, 120));
+
     }
 
 }

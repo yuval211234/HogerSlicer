@@ -61,10 +61,9 @@ public class Blade : MonoBehaviour {
 	{
 		isCutting = true;
         currentBladeTrail = Instantiate(bladeTrailPrefab, transform);
+        currentBladeTrail.transform.position = cam.ScreenToWorldPoint(Input.mousePosition);
         previousPosition = cam.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = previousPosition;
-
-        circleCollider.enabled = false;
+		circleCollider.enabled = false;
 	}
 
 	void StopCutting ()
