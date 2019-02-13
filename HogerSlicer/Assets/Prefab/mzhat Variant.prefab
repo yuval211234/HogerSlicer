@@ -21,20 +21,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &2771661081473672822
+--- !u!61 &3679723298158655468
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3850344413972316242}
+  m_GameObject: {fileID: 3850344413972316240}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00029735826, y: 0.0029829512}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -45,7 +45,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.05538164, y: 0.03467097}
+  m_Size: {x: 0.005, y: 0.003}
   m_EdgeRadius: 0
 --- !u!1001 &3850344413972350704
 PrefabInstance:
@@ -56,19 +56,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: aef5e946cb7310f4e9663f91e42501fb, type: 3}
       propertyPath: m_Name
-      value: mzhat
+      value: mzhat Variant
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: aef5e946cb7310f4e9663f91e42501fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.99
+      value: 66.05185
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: aef5e946cb7310f4e9663f91e42501fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.656
+      value: 18.03067
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: aef5e946cb7310f4e9663f91e42501fb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.082
+      value: -31.68271
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: aef5e946cb7310f4e9663f91e42501fb, type: 3}
       propertyPath: m_LocalRotation.x
@@ -147,12 +147,6 @@ PrefabInstance:
 --- !u!1 &3850344413972316240 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: aef5e946cb7310f4e9663f91e42501fb,
-    type: 3}
-  m_PrefabInstance: {fileID: 3850344413972350704}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3850344413972316242 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100002, guid: aef5e946cb7310f4e9663f91e42501fb,
     type: 3}
   m_PrefabInstance: {fileID: 3850344413972350704}
   m_PrefabAsset: {fileID: 0}
