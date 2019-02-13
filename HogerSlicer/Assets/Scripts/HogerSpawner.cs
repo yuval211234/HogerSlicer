@@ -1,49 +1,48 @@
 using System.Collections;
 using UnityEngine;
 
-public class HogerSpawner : MonoBehaviour {
+public class HogerSpawner : MonoBehaviour
+{
+    public GameObject fruitPrefab;
+    public Transform[] spawnPoints = new Transform[3];
+    public Material[] hogerVariants = new Material[3];
 
 	public GameObject hogerPrefab;
     public GameObject bombPrefab;
     public float bombSpawnProbability = 10;
     public float startForce = 15f;
-    public Transform[] spawnPoints = new Transform[3];
-    public Material[] hogerVariants = new Material[3];
-
 	public int stage = 0;
-
     public float endMinDelay = .1f;
     public float maxDelay = 1f;
-
     public float startMinDelay = 1f;
     public float startMaxDelay = 2f;
 
     public GameManager GameManager { get; set; }
 
-    float getMinDelay() {
-		return startMinDelay;
-	}
+    float getMinDelay()
+    {
+        return startMinDelay;
+    }
 
-	float getMaxDelay() {
-		return startMaxDelay;
-	}
+    float getMaxDelay()
+    {
+        return startMaxDelay;
+    }
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         StartCoroutine(SpawnFruits(GameManager.GetInstace()));
-	}
+    }
 
-	IEnumerator SpawnFruits (GameManager gameManager)
-	{
-		while (!gameManager.IsGameOver())
-		{
-			float delay = Random.Range(this.getMinDelay(), this.getMaxDelay());
-			yield return new WaitForSeconds(delay);
+    IEnumerator SpawnFruits(GameManager gameManager)
+    {
+        while (!GameManager.GetInstace().IsGameOver())
+        {
+            float delay = Random.Range(this.getMinDelay(), this.getMaxDelay());
+            yield return new WaitForSeconds(delay);
 
             float currentSeed = Mathf.Round(Random.Range(1, bombSpawnProbability + 1));
-
-            Debug.Log(currentSeed);
 
             if (currentSeed == bombSpawnProbability)
             {
@@ -63,12 +62,11 @@ public class HogerSpawner : MonoBehaviour {
         int spawnIndex = Random.Range(0, spawnPoints.Length);
         Transform spawnPoint = spawnPoints[spawnIndex];
 
-        GameObject spawnedObject = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
-        spawnedObject.GetComponent<Rigidbody2D>().AddForce(spawnedObject.transform.up * startForce, ForceMode2D.Impulse);
-        Destroy(spawnedObject, 5f);
+        GameObject spawnedFruit = Instantiate(fruitPrefab, spawnPoint.position, spawnPoint.rotation);
+        Material chosenMaterial = hogerVariants[Random.Range(0, hogerVariants.Length)];
+        spawnedFruit.transform.GetChild(0).GetComponent<Renderer>().material = chosenMaterial;
+        Destroy(spawnedFruit, 5f);
 
-        return spawnedObject;
+        return spawnedFruit;
     }
-	
-
 }

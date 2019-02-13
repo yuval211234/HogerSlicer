@@ -48,8 +48,6 @@ public class Hoger : MonoBehaviour
         Destroy(slicedFruit, 3f);
     }
 
-
-
     public void InitSlicedHoger(Transform hogerPart)
     {
         hogerPart.gameObject.GetComponent<Rigidbody2D>().velocity = rb.velocity;
