@@ -1,7 +1,10 @@
 ﻿<Properties StartupConfiguration="{5B9FBFA3-7ECE-0DE5-0CAF-676CE953B0C1}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/FruitSpawner.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Blade.cs">
     <Files>
-      <File FileName="Assets/Scripts/FruitSpawner.cs" Line="29" Column="30" />
+      <File FileName="Assets/Scripts/Hoger.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/HogerSpawner.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/SlicedHoger.cs" Line="13" Column="6" />
+      <File FileName="Assets/Scripts/Blade.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
