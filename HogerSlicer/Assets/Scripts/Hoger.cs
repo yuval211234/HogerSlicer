@@ -50,5 +50,3 @@ public class Hoger : MonoBehaviour
         Destroy(slicedFruit, 3f);
     }
 }
-
-}
