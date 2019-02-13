@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FruitSpawner : MonoBehaviour {
+public class HogerSpawner : MonoBehaviour {
 
 	public GameObject fruitPrefab;
 	public Transform[] spawnPoints;
