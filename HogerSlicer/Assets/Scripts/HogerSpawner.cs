@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HogerSpawner : MonoBehaviour {
@@ -13,13 +12,15 @@ public class HogerSpawner : MonoBehaviour {
 
 	public int stage = 0;
 
-	public float endminDelay = .1f;
-	public float maxDelay = 1f;
+    public float endMinDelay = .1f;
+    public float maxDelay = 1f;
 
-	public float startMinDelay = 1f;
-	public float startMaxDelay = 2f;
+    public float startMinDelay = 1f;
+    public float startMaxDelay = 2f;
 
-	float getMinDelay() {
+    public GameManager GameManager { get; set; }
+
+    float getMinDelay() {
 		return startMinDelay;
 	}
 
@@ -28,13 +29,14 @@ public class HogerSpawner : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
-		StartCoroutine(SpawnFruits());
+	void Start ()
+    {
+        StartCoroutine(SpawnFruits(GameManager.GetInstace()));
 	}
 
-	IEnumerator SpawnFruits ()
+	IEnumerator SpawnFruits (GameManager gameManager)
 	{
-		while (true)
+		while (!gameManager.IsGameOver())
 		{
 			float delay = Random.Range(this.getMinDelay(), this.getMaxDelay());
 			yield return new WaitForSeconds(delay);
@@ -68,4 +70,5 @@ public class HogerSpawner : MonoBehaviour {
         return spawnedObject;
     }
 	
+
 }

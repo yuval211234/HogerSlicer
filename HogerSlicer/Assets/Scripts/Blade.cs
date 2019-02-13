@@ -38,7 +38,6 @@ public class Blade : MonoBehaviour {
 		{
 			UpdateCut();
 		}
-
 	}
 
 	void UpdateCut ()
