@@ -8,8 +8,21 @@ public class HogerSpawner : MonoBehaviour {
 	public Transform[] spawnPoints = new Transform[3];
     public Material[] hogerVariants = new Material[3];
 
-	public float minDelay = .1f;
+	public int stage = 0;
+
+	public float endminDelay = .1f;
 	public float maxDelay = 1f;
+
+	public float startMinDelay = 1f;
+	public float startMaxDelay = 2f;
+
+	float getMinDelay() {
+		return startMinDelay;
+	}
+
+	float getMaxDelay() {
+		return startMaxDelay;
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -18,10 +31,10 @@ public class HogerSpawner : MonoBehaviour {
 
 	IEnumerator SpawnFruits ()
 	{
-        while (true)
-        {
-            float delay = Random.Range(minDelay, maxDelay);
-            yield return new WaitForSeconds(delay);
+		while (true)
+		{
+			float delay = Random.Range(this.getMinDelay(), this.getMaxDelay());
+			yield return new WaitForSeconds(delay);
 
             int spawnIndex = Random.Range(0, spawnPoints.Length);
             Transform spawnPoint = spawnPoints[spawnIndex];
