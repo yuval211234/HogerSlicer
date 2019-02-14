@@ -80,13 +80,15 @@ public class MyGameManager : MonoBehaviour
             if (CurrentGameMode.IsGameOver() && !isGameOver)
             {
                 isGameOver = CurrentGameMode.IsGameOver();
-                Invoke("ReturnToMenu", 3f);
+                ReturnToMenu();
             }
         }
     }
 
     private void ReturnToMenu()
     {
+        isGameOver = false;
+        CurrentGameMode.Init(ObjectSpawner);
         SceneManager.LoadScene(0);
     }
 
