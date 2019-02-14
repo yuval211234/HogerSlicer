@@ -62,7 +62,7 @@ public class MyGameManager : MonoBehaviour
             GameModeDictionary = new Dictionary<string, IGameModeBehavior>
             {
                 { "UNTIL_WHEN", new UntilWhenMode() },
-                { "HOW_MUCH_MORE", new HowMuchMoreMode(120) }
+                { "HOW_MUCH_MORE", new HowMuchMoreMode(5) }
             };
 
         }

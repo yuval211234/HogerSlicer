@@ -188,17 +188,14 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 27efba7faf26c8643811b2391631962a, type: 2}
   - {fileID: 2100000, guid: 93aa6bcc83345514fae5dbfa622f6979, type: 2}
   - {fileID: 2100000, guid: 1942ee9f3747f3242acad10720151c2d, type: 2}
+  bossPrefab: {fileID: 4744117727109487630, guid: ffc8957372e799c4bad244d94fadeb74,
+    type: 3}
   hogerPrefab: {fileID: 4744117727109487630, guid: 3fe6328b7b46088418977a71593af4fa,
     type: 3}
   bombPrefab: {fileID: 3850344413972316240, guid: 1aae82c9d482d48488ea902d3fa9c5b7,
     type: 3}
-  bombSpawnProbability: 6
+  bossSpawnPoint: {fileID: 4603242054266984993}
   startForce: 15
-  stage: 0
-  endMinDelay: 0.1
-  maxDelay: 1
-  startMinDelay: 1
-  startMaxDelay: 2
 --- !u!1 &4603242054017620199
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,13 +309,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4603242054266984992}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -6.32, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.13052616, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: -6.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4603242053429221179}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 15}
 --- !u!1 &4603242054372043163
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,13 +339,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4603242054372043163}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.13052624, w: 0.9914449}
   m_LocalPosition: {x: -4, y: -6.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4603242053429221179}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -15}
 --- !u!1 &4603242054684986005
 GameObject:
   m_ObjectHideFlags: 0

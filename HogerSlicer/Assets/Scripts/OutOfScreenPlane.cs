@@ -18,8 +18,11 @@ public class OutOfScreenPlane : MonoBehaviour
     {
         if (col.tag != "Untagged")
         {
-            Destroy(col.gameObject);
-            EventManager.TriggerEvent("MISS", col.gameObject.tag);
+            if (col.gameObject.GetComponent<Rigidbody2D>().velocity.y <= 0)
+            {
+                Destroy(col.gameObject);
+                EventManager.TriggerEvent("MISS", col.gameObject.tag);
+            }
         }
 
     }

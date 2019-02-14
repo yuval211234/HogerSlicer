@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e3163bf5dfd2deb42835f5e71adf429a, type: 3}
+      propertyPath: m_TagString
+      value: BossHoger
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: e3163bf5dfd2deb42835f5e71adf429a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.21875143

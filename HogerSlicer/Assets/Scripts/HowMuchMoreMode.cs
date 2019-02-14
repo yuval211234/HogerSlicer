@@ -11,17 +11,23 @@ public class HowMuchMoreMode : IGameModeBehavior
     public int Lives { get; private set; } = 3;
     public int Score { get; private set; } = 100;
     public int stage = 0;
-    public float endMinDelay = .1f;
-    public float maxDelay = 1f;
+    public float endMinDelay;
+    public float endMaxDelay;
     public float startMinDelay = 1f;
     public float startMaxDelay = 2f;
     private bool isInFinalMode = false;
     public bool isPavelSpawned = false;
+    private bool isEndGame = false;
     private float timeRemaining;
 
     public HowMuchMoreMode(int secondsToPlay)
     {
+        isInFinalMode = false;
+        isPavelSpawned = false;
+        isEndGame = false;
         timeRemaining = secondsToPlay;
+        endMinDelay = startMinDelay / 3;
+        endMaxDelay = startMaxDelay / 3;
     }
 
     public void Update()
@@ -29,6 +35,8 @@ public class HowMuchMoreMode : IGameModeBehavior
         if (!isInFinalMode)
         {
             timeRemaining -= Time.deltaTime * 100;
+            startMinDelay = Mathf.Lerp(startMinDelay, endMinDelay, Time.deltaTime * 2);
+            startMaxDelay = Mathf.Lerp(startMaxDelay, endMaxDelay, Time.deltaTime * 2);
             if (timeRemaining <= 0)
             {
                 isInFinalMode = true;
@@ -43,13 +51,19 @@ public class HowMuchMoreMode : IGameModeBehavior
             }
 
         }
+
     }
 
 
 
     void Spawn()
     {
-        objectSpawner.SpawnHoger();        
+        int spawnCount = UnityEngine.Random.Range(1, 3);
+
+        for (int i = 0; i < spawnCount; i++)
+        {
+            objectSpawner.SpawnHoger();
+        }
     }
 
     public void HandleMiss(string type)
@@ -58,6 +72,9 @@ public class HowMuchMoreMode : IGameModeBehavior
         {
             case "HOGER":
                 MissedHogerCut();
+                break;
+            case "BOSSHOGER":
+                isEndGame = true;
                 break;
         }
     }
@@ -84,7 +101,7 @@ public class HowMuchMoreMode : IGameModeBehavior
 
     public bool IsGameOver()
     {
-        return false;//Lives <= 0 || Score <= 0;
+        return Lives <= 0 || isEndGame;
     }
 
     public int GetScore()
