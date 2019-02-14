@@ -8,5 +8,5 @@
     void HandleMiss(string type);
     void Update();
     float GetDelay();
-
+    string GetGameState();
 }

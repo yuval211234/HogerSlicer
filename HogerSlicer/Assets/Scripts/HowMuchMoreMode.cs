@@ -1,45 +1,55 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UntilWhenMode : IGameModeBehavior
+public class HowMuchMoreMode : IGameModeBehavior
 {
     public float initialRotation;
 
     public HogerSpawner objectSpawner {get; private set;}
     public int Lives { get; private set; } = 3;
-    public int Score { get; private set; } = 0;
-    public bool IsMzCollision { get; private set; } = false;
-    public float bombSpawnProbability = 10;
+    public int Score { get; private set; } = 100;
     public int stage = 0;
     public float endMinDelay = .1f;
     public float maxDelay = 1f;
     public float startMinDelay = 1f;
     public float startMaxDelay = 2f;
+    private bool isInFinalMode = false;
+    public bool isPavelSpawned = false;
+    private float timeRemaining;
+
+    public HowMuchMoreMode(int secondsToPlay)
+    {
+        timeRemaining = secondsToPlay;
+    }
 
     public void Update()
     {
-        Spawn();
+        if (!isInFinalMode)
+        {
+            timeRemaining -= Time.deltaTime * 100;
+            if (timeRemaining <= 0)
+            {
+                isInFinalMode = true;
+            }
+            Spawn();
+        } else
+        {
+            if (!isPavelSpawned)
+            {
+                isPavelSpawned = true;
+                objectSpawner.SpawnPavel();
+            }
+
+        }
     }
 
 
 
     void Spawn()
     {
-        float delay = Random.Range(startMinDelay, startMaxDelay);
-        new WaitForSeconds(delay);
-
-        float currentSeed = Mathf.Round(Random.Range(1, bombSpawnProbability + 1));
-
-        if (currentSeed == bombSpawnProbability)
-        {
-            objectSpawner.SpawnBomb();
-        }
-        else
-        {
-            objectSpawner.SpawnHoger();
-        }
-        
+        objectSpawner.SpawnHoger();        
     }
 
     public void HandleMiss(string type)
@@ -56,18 +66,10 @@ public class UntilWhenMode : IGameModeBehavior
     {
         switch (type.ToUpper())
         {
-            case "MZ":
-                CollideMzReport();
-                break;
             case "HOGER":
                 HogerCut();
                 break;
         }
-    }
-
-    public void CollideMzReport()
-    {
-        IsMzCollision = true;
     }
 
     public void MissedHogerCut()
@@ -82,7 +84,7 @@ public class UntilWhenMode : IGameModeBehavior
 
     public bool IsGameOver()
     {
-        return Lives <= 0 || IsMzCollision;
+        return false;//Lives <= 0 || Score <= 0;
     }
 
     public int GetScore()
@@ -98,18 +100,20 @@ public class UntilWhenMode : IGameModeBehavior
     public void Init(HogerSpawner ObjectSpawner)
     {
         Lives = 3;
-        Score = 0;
-        IsMzCollision = false;
         objectSpawner = ObjectSpawner;
     }
 
     public float GetDelay()
     {
-        return Random.Range(startMinDelay, startMaxDelay);
+        return UnityEngine.Random.Range(startMinDelay, startMaxDelay);
     }
 
     public string GetGameState()
     {
-        return $"X {Score}";
+        TimeSpan time = TimeSpan.FromSeconds(Math.Round(timeRemaining));
+        //here backslash is must to tell that colon is
+        //not the part of format, it just a character that we want in output
+        string str = time.ToString(@"mm\:ss");
+        return str;
     }
 }

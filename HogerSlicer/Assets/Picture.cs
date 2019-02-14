@@ -8,7 +8,7 @@ public class Picture : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Renderer>().material.mainTexture = texture[Mathf.RoundToInt(Random.Range(0, 3))];
+        GetComponent<Renderer>().material.mainTexture = texture[Mathf.RoundToInt(Random.Range(0, texture.Length))];
     }
 
     // Update is called once per frame

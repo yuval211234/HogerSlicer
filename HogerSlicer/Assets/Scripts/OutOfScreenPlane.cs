@@ -15,9 +15,12 @@ public class OutOfScreenPlane : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D col)
-    {            
-        Destroy(col.gameObject);
-        EventManager.TriggerEvent("MISS", col.gameObject.tag);
+    {
+        if (col.tag != "Untagged")
+        {
+            Destroy(col.gameObject);
+            EventManager.TriggerEvent("MISS", col.gameObject.tag);
+        }
 
     }
 }

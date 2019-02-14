@@ -59,11 +59,14 @@ public class MyGameManager : MonoBehaviour
 
         if (GameModeDictionary == null)
         {
-            GameModeDictionary = new Dictionary<string, IGameModeBehavior>();
-            IGameModeBehavior untilWhenMode = new UntilWhenMode();
-            GameModeDictionary.Add("UNTIL_WHEN", untilWhenMode);
+            GameModeDictionary = new Dictionary<string, IGameModeBehavior>
+            {
+                { "UNTIL_WHEN", new UntilWhenMode() },
+                { "HOW_MUCH_MORE", new HowMuchMoreMode(5) }
+            };
+
         }
-        
+
         CurrentGameMode = GameModeDictionary[CurrentMode];
 
         instance.InitGame();
@@ -114,6 +117,11 @@ public class MyGameManager : MonoBehaviour
         {
             return CurrentGameMode.GetLives();
         }
+    }
+
+    public string GetGameState()
+    {
+        return CurrentGameMode.GetGameState();
     }
 
     internal void Restart()

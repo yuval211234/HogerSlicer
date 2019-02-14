@@ -5,9 +5,13 @@ public class HogerSpawner : MonoBehaviour
 {
     public Transform[] spawnPoints = new Transform[3];
     public Material[] hogerVariants = new Material[3];
+    public GameObject bossPrefab;
 
-	public GameObject hogerPrefab;
+    public GameObject hogerPrefab;
     public GameObject bombPrefab;
+
+
+    public Transform bossSpawnPoint;
     public float startForce = 15f;
 
 
@@ -33,6 +37,15 @@ public class HogerSpawner : MonoBehaviour
         Transform spawnPoint = spawnPoints[spawnIndex];
 
         GameObject spawnedObject = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
+        Rigidbody2D spawnedRigidBody2D = spawnedObject.GetComponent<Rigidbody2D>();
+        spawnedRigidBody2D.AddForce(spawnedObject.transform.up * startForce, ForceMode2D.Impulse);
+
+        return spawnedObject;
+    }
+
+    public GameObject SpawnPavel()
+    {
+        GameObject spawnedObject = Instantiate(bossPrefab, bossSpawnPoint.position, bossSpawnPoint.rotation);
         Rigidbody2D spawnedRigidBody2D = spawnedObject.GetComponent<Rigidbody2D>();
         spawnedRigidBody2D.AddForce(spawnedObject.transform.up * startForce, ForceMode2D.Impulse);
 

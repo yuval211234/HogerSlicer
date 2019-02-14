@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 11446616}
   - component: {fileID: 114971376289423164}
   m_Layer: 5
-  m_Name: StartButton
+  m_Name: UntilWhen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -381,13 +381,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11488040}
         m_MethodName: StartButtonClicked
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: UNTIL_WHEN
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2279,7 +2279,7 @@ GameObject:
   - component: {fileID: 11487658}
   - component: {fileID: 114345586707957254}
   m_Layer: 5
-  m_Name: OptionsButton
+  m_Name: HowMuchMore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2382,15 +2382,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11432662}
-        m_MethodName: ShowOptionsPanel
-        m_Mode: 1
+      - m_Target: {fileID: 11488040}
+        m_MethodName: StartButtonClicked
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: HOW_MUCH_MORE
           m_BoolArgument: 0
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2547,7 +2547,7 @@ RectTransform:
   m_GameObject: {fileID: 159020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 22439792}
   m_RootOrder: 5
@@ -3110,7 +3110,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Options
+  m_Text: 'Play How Much More
+
+'
 --- !u!114 &114484449128214796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3401,7 +3403,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Start
+  m_Text: Play Until When Mode
 --- !u!114 &114021890999685364
 MonoBehaviour:
   m_ObjectHideFlags: 0
