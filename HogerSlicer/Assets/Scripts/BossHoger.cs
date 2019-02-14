@@ -2,33 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hoger : MonoBehaviour
+public class BossHoger : MonoBehaviour
 {
 
     public GameObject slicedObjectPrefab;
-    public float startForce = 2f;
-    public float initialRotation;
-    public float flipRotation;
+    public int ToSliceCount = 90;
+    private int currCount = 0;
+    private Rigidbody2D rigidBody;
 
     void Start()
     {
-        initialRotation = transform.rotation.z;
-        float randomMultiplier = Random.Range(-2, 2);
-        flipRotation = Random.Range(20, 120) * randomMultiplier;
+        rigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        transform.Rotate(Vector3.right, Time.deltaTime * flipRotation);
-        transform.Rotate(Vector3.forward, Time.deltaTime * initialRotation * 200);
+        if (ToSliceCount <= 0)
+        {
+            EventManager.TriggerEvent("CUT", "BOSSHOGER");
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag == "Blade")
-        {
-            CreateSlices(col);
-            DestroyHoger();
+        if (col.tag == "Blade") { 
+
+            ToSliceCount--;
+            Debug.Log(ToSliceCount);
+            if (ToSliceCount > 0)
+            {
+                Vector2 goTo = (rigidBody.position - col.gameObject.GetComponent<Rigidbody2D>().position).normalized * 6;
+                goTo.y = 0;
+                rigidBody.velocity = Vector2.up * 4 + goTo;
+            } else
+            {
+                CreateSlices(col);
+                DestroyHoger();
+            }
             EventManager.TriggerEvent("CUT", "HOGER");
         }
     }
@@ -56,5 +66,5 @@ public class Hoger : MonoBehaviour
         hogerPart.GetComponent<Renderer>().material = transform.GetChild(0).GetComponent<Renderer>().material;
         hogerPart.gameObject.GetComponent<Rigidbody2D>().AddForce(VectorToGive * Random.Range(100, 200));
     }
-
 }
+

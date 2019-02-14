@@ -14,6 +14,7 @@ public class MyGameManager : MonoBehaviour
 
     [SerializeField]
     public string CurrentMode;
+    private GameObject onFailPanel;
     
     public static IGameModeBehavior CurrentGameMode { get; set; }
 
@@ -47,16 +48,25 @@ public class MyGameManager : MonoBehaviour
 
     void Init()
     {
+        if (onFailPanel == null)
+        {
+            onFailPanel = GameObject.Find("GameOverText");
+        }
+        onFailPanel.SetActive(false);
+        
         EventManager.StartListening("CUT", Cut);
         EventManager.StartListening("MISS", Miss);
 
         if (GameModeDictionary == null)
         {
-            GameModeDictionary = new Dictionary<string, IGameModeBehavior>();
-            IGameModeBehavior untilWhenMode = new UntilWhenMode();
-            GameModeDictionary.Add("UNTIL_WHEN", untilWhenMode);
+            GameModeDictionary = new Dictionary<string, IGameModeBehavior>
+            {
+                { "UNTIL_WHEN", new UntilWhenMode() },
+                { "HOW_MUCH_MORE", new HowMuchMoreMode(5) }
+            };
+
         }
-        
+
         CurrentGameMode = GameModeDictionary[CurrentMode];
 
         instance.InitGame();
@@ -79,8 +89,9 @@ public class MyGameManager : MonoBehaviour
         {
             if (CurrentGameMode.IsGameOver() && !isGameOver)
             {
+                onFailPanel.SetActive(true);
                 isGameOver = CurrentGameMode.IsGameOver();
-                ReturnToMenu();
+                Invoke("ReturnToMenu", 3f);
             }
         }
     }
@@ -108,6 +119,11 @@ public class MyGameManager : MonoBehaviour
         }
     }
 
+    public string GetGameState()
+    {
+        return CurrentGameMode.GetGameState();
+    }
+
     internal void Restart()
     {
         InitGame();
@@ -120,11 +136,17 @@ public class MyGameManager : MonoBehaviour
 
     public void Cut(string type)
     {
-        CurrentGameMode.HandleCut(type);
+        if (!isGameOver)
+        {
+            CurrentGameMode.HandleCut(type);
+        }
     }
 
     public void Miss(string type)
     {
-        CurrentGameMode.HandleMiss(type);
+        if (!isGameOver)
+        {
+            CurrentGameMode.HandleMiss(type);
+        }
     }
 }

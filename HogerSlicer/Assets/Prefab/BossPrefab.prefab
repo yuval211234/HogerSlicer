@@ -47,7 +47,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.85, y: 0.58}
   m_EdgeRadius: 0
---- !u!114 &5102102843974553878
+--- !u!114 &6372770355199030169
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,14 +56,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4744117727109487630}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e80914e83e2d9fc4183541214777afd3, type: 3}
+  m_Script: {fileID: 11500000, guid: 66582bfaa070d7b47934b55c166f6aa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slicedObjectPrefab: {fileID: 5369649217769288925, guid: 1065c8679321cc240a4b55745abccbe4,
+  slicedObjectPrefab: {fileID: 5369649217769288925, guid: 0f221939e23a0d64cac6314988c4aefb,
     type: 3}
-  startForce: 15
-  initialRotation: 0
-  flipRotation: 0
+  ToSliceCount: 90
 --- !u!1 &7090135882498091326
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,9 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   texture:
-  - {fileID: 2800000, guid: d86e7fe501a78c440ad74b009c61f665, type: 3}
-  - {fileID: 2800000, guid: e7a0d13c96c9c04458fc105febfdf263, type: 3}
-  - {fileID: 2800000, guid: a51d050498054b143bb59950c4a2c58b, type: 3}
+  - {fileID: 2800000, guid: 010bf5d397beea442a7dd5ef5d11327c, type: 3}
 --- !u!1001 &4744117727109520044
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -181,23 +177,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100002, guid: e3163bf5dfd2deb42835f5e71adf429a, type: 3}
       propertyPath: m_Name
-      value: Hoger Variant
+      value: BossPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: e3163bf5dfd2deb42835f5e71adf429a, type: 3}
       propertyPath: m_TagString
-      value: Hoger
+      value: BossHoger
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: e3163bf5dfd2deb42835f5e71adf429a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.5511107
+      value: 0.21875143
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: e3163bf5dfd2deb42835f5e71adf429a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3547838
+      value: 4.9951577
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: e3163bf5dfd2deb42835f5e71adf429a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.8955479
+      value: -53.139977
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: e3163bf5dfd2deb42835f5e71adf429a, type: 3}
       propertyPath: m_LocalRotation.x
@@ -233,15 +229,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: e3163bf5dfd2deb42835f5e71adf429a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: e3163bf5dfd2deb42835f5e71adf429a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: e3163bf5dfd2deb42835f5e71adf429a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e3163bf5dfd2deb42835f5e71adf429a, type: 3}
       propertyPath: m_LocalRotation.x
@@ -278,7 +274,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: e3163bf5dfd2deb42835f5e71adf429a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1942ee9f3747f3242acad10720151c2d, type: 2}
+      objectReference: {fileID: 2100000, guid: 27efba7faf26c8643811b2391631962a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3163bf5dfd2deb42835f5e71adf429a, type: 3}
 --- !u!1 &4744117727109487630 stripped

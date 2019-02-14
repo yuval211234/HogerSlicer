@@ -12,23 +12,40 @@ public class UntilWhenMode : IGameModeBehavior
     public bool IsMzCollision { get; private set; } = false;
     public float bombSpawnProbability = 10;
     public int stage = 0;
-    public float endMinDelay = .1f;
+    public float endMinDelay;
+    public float endMaxDelay;
     public float maxDelay = 1f;
     public float startMinDelay = 1f;
     public float startMaxDelay = 2f;
 
+    public UntilWhenMode()
+    {
+        endMinDelay = startMinDelay;
+        endMaxDelay = startMaxDelay;
+    }
+
     public void Update()
     {
-        Spawn();
+        startMinDelay = Mathf.Lerp(startMinDelay, endMinDelay / 3, Time.deltaTime);
+        startMaxDelay = Mathf.Lerp(startMaxDelay, endMaxDelay / 3, Time.deltaTime);
+
+        int maxSpawnCount = 1;
+
+        if (startMinDelay <= 2 * endMinDelay / 3) maxSpawnCount++;
+        if (startMinDelay <= endMinDelay / 2) maxSpawnCount++;
+
+        int spawnCount = Random.Range(1, maxSpawnCount + 1);
+        for (int i = 0; i < spawnCount; i++)
+        {
+            Spawn();
+        }
+
     }
 
 
 
     void Spawn()
     {
-        float delay = Random.Range(startMinDelay, startMaxDelay);
-        new WaitForSeconds(delay);
-
         float currentSeed = Mathf.Round(Random.Range(1, bombSpawnProbability + 1));
 
         if (currentSeed == bombSpawnProbability)
@@ -106,5 +123,10 @@ public class UntilWhenMode : IGameModeBehavior
     public float GetDelay()
     {
         return Random.Range(startMinDelay, startMaxDelay);
+    }
+
+    public string GetGameState()
+    {
+        return $"X {Score}";
     }
 }

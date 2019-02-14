@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Blade
   - Hoger
+  - BossHoger
   layers:
   - Default
   - TransparentFX

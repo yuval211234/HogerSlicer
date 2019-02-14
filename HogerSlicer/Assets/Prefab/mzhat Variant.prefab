@@ -71,6 +71,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: mzhat Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: aef5e946cb7310f4e9663f91e42501fb, type: 3}
+      propertyPath: m_TagString
+      value: MZ
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: aef5e946cb7310f4e9663f91e42501fb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.279208
