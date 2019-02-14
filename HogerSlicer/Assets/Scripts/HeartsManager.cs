@@ -22,7 +22,7 @@ public class HeartsManager : MonoBehaviour
         int livesLeft = MyGameManager.instance.Lives;
         int hearts = transform.childCount;
 
-        if (livesLeft < hearts)
+        if (livesLeft < hearts && livesLeft >= 0)
         {
             transform.GetChild(livesLeft).gameObject.SetActive(false);
         }        

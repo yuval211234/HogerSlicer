@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MyGameManager : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class MyGameManager : MonoBehaviour
     private Dictionary<string, IGameModeBehavior> GameModeDictionary;
 
     private static MyGameManager gameManager;
+
+    private bool isGameOver = false;
 
     public static MyGameManager instance
     {
@@ -53,7 +56,7 @@ public class MyGameManager : MonoBehaviour
             IGameModeBehavior untilWhenMode = new UntilWhenMode();
             GameModeDictionary.Add("UNTIL_WHEN", untilWhenMode);
         }
-
+        
         CurrentGameMode = GameModeDictionary[CurrentMode];
 
         instance.InitGame();
@@ -74,11 +77,17 @@ public class MyGameManager : MonoBehaviour
     {
         if (CurrentGameMode != null)
         {
-            if (CurrentGameMode.IsGameOver())
+            if (CurrentGameMode.IsGameOver() && !isGameOver)
             {
-                Time.timeScale = 0;
+                isGameOver = CurrentGameMode.IsGameOver();
+                Invoke("ReturnToMenu", 3f);
             }
         }
+    }
+
+    private void ReturnToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public int Score
