@@ -14,6 +14,7 @@ public class StartOptions : MonoBehaviour {
 	public bool changeMusicOnStart;										//Choose whether to continue playing menu music or start a new music clip
     public CanvasGroup fadeOutImageCanvasGroup;                         //Canvas group used to fade alpha of image which fades in before changing scenes
     public Image fadeImage;                                             //Reference to image used to fade out before changing scenes
+    private string gameMode;
 
 	[HideInInspector] public bool inMainMenu = true;					//If true, pause button disabled in main menu (Cancel in input manager, default escape key)
 	[HideInInspector] public AnimationClip fadeAlphaAnimationClip;		//Animation clip fading out UI elements alpha
@@ -41,8 +42,9 @@ public class StartOptions : MonoBehaviour {
 	}
 
 
-	public void StartButtonClicked()
+	public void StartButtonClicked(string gameMode)
 	{
+        this.gameMode = gameMode;
 		//If changeMusicOnStart is true, fade out volume of music group of AudioMixer by calling FadeDown function of PlayMusic
 		//To change fade time, change length of animation "FadeToColor"
 		if (menuSettingsData.musicLoopToChangeTo != null) 
@@ -83,6 +85,14 @@ public class StartOptions : MonoBehaviour {
     //Once the level has loaded, check if we want to call PlayLevelMusic
     void SceneWasLoaded(Scene scene, LoadSceneMode mode)
     {
+        foreach (var item in scene.GetRootGameObjects())
+        {
+            if(item.gameObject.GetComponent<MyGameManager>() != null)
+            {
+                MyGameManager gameManager = item.gameObject.GetComponent<MyGameManager>();
+                gameManager.CurrentMode = gameMode;
+            }
+        }
 		//if changeMusicOnStart is true, call the PlayLevelMusic function of playMusic
 		if (menuSettingsData.musicLoopToChangeTo != null)
 		{
