@@ -14,6 +14,7 @@ public class MyGameManager : MonoBehaviour
 
     [SerializeField]
     public string CurrentMode;
+    private GameObject onFailPanel;
     
     public static IGameModeBehavior CurrentGameMode { get; set; }
 
@@ -47,6 +48,12 @@ public class MyGameManager : MonoBehaviour
 
     void Init()
     {
+        if (onFailPanel == null)
+        {
+            onFailPanel = GameObject.Find("GameOverText");
+        }
+        onFailPanel.SetActive(false);
+        
         EventManager.StartListening("CUT", Cut);
         EventManager.StartListening("MISS", Miss);
 
@@ -79,8 +86,9 @@ public class MyGameManager : MonoBehaviour
         {
             if (CurrentGameMode.IsGameOver() && !isGameOver)
             {
+                onFailPanel.SetActive(true);
                 isGameOver = CurrentGameMode.IsGameOver();
-                ReturnToMenu();
+                Invoke("ReturnToMenu", 3f);
             }
         }
     }
@@ -120,11 +128,17 @@ public class MyGameManager : MonoBehaviour
 
     public void Cut(string type)
     {
-        CurrentGameMode.HandleCut(type);
+        if (!isGameOver)
+        {
+            CurrentGameMode.HandleCut(type);
+        }
     }
 
     public void Miss(string type)
     {
-        CurrentGameMode.HandleMiss(type);
+        if (!isGameOver)
+        {
+            CurrentGameMode.HandleMiss(type);
+        }
     }
 }

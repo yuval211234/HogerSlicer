@@ -54,7 +54,7 @@ public class Hoger : MonoBehaviour
     {
         hogerPart.gameObject.GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity;
         hogerPart.GetComponent<Renderer>().material = transform.GetChild(0).GetComponent<Renderer>().material;
-        hogerPart.gameObject.GetComponent<Rigidbody2D>().AddForce(VectorToGive * Random.Range(60, 120));
+        hogerPart.gameObject.GetComponent<Rigidbody2D>().AddForce(VectorToGive * Random.Range(100, 200));
     }
 
 }
